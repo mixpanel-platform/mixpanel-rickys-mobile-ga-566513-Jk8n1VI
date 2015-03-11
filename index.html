@@ -27,6 +27,11 @@
         }
         var $dau = MP.api.events(eventName, params);
         
+        $.when($dau).done(function(dau){
+          console.log($dau);
+          
+        });
+        
         console.log($dau.values());
         
         /*
