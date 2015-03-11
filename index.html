@@ -37,9 +37,10 @@
           };
           _.each(_.keys(dau.values()), function(key){
               if (key in revenue.values()) {
-                data[key] = revenue.values()[key] / dau.values()[key];
+                data['ARPDAU'][key] = revenue.values()[key] / dau.values()[key];
               }
           });
+          
           
           var chart = $('<div></div>').appendTo('body').MPChart({chartType: 'line'});
           chart.MPChart('setData',data);
