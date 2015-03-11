@@ -37,6 +37,7 @@
           };
           _.each(_.keys(dau.values()), function(key){
               if (key in revenue.values()) {
+                console.log('here');
                 data['ARPDAU'][key] = revenue.values()[key] / dau.values()[key];
               }
           });
