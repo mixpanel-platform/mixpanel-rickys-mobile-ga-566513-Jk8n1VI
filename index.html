@@ -39,13 +39,12 @@
           
           _.each(_.keys(dau.values()[dauEventName]), function(key){
               if (key in revenue.values()) {
-                if (revenue.values()[key] / dau.values()[dauEventName][key]) {
+                if (typeof(revenue.values()[key] / dau.values()[dauEventName][key]) == 'number') {
                     data['ARPDAU'][key] = revenue.values()[key] / dau.values()[dauEventName][key];
                 }
               }
           });
           
-          console.log(data);
           
           var chart = $('<div></div>').appendTo('body').MPChart({chartType: 'line'});
           chart.MPChart('setData',data);
