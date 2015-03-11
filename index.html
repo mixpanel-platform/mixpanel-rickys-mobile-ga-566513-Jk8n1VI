@@ -31,6 +31,8 @@
         var $revenue = MP.api.segment(revenueEvent, revenueProp, {from: moment().subtract(30, 'days'), method: 'sum'});
       
         $.when($dau, $revenue).done(function(dau, revenue){
+          var keys = $dau._keys;
+          
           console.log(dau.values());
           console.log(revenue.values());
         });
