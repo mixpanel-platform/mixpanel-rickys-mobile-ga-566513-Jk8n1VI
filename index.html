@@ -38,10 +38,8 @@
           };
           
           _.each(_.keys(dau.values()[dauEventName]), function(key){
-              if (key in revenue.values()) {
-                if (typeof(revenue.values()[key] / dau.values()[dauEventName][key]) == 'number') {
-                    data['ARPDAU'][key] = revenue.values()[key] / dau.values()[dauEventName][key];
-                }
+              if (key in revenue.values() && revenue.values()[key] && dau.values()[dauEventName][key]) {
+                  data['ARPDAU'][key] = revenue.values()[key] / dau.values()[dauEventName][key];
               }
           });
           
