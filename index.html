@@ -37,11 +37,11 @@
               }
           };
           
-      
-         
           _.each(_.keys(dau.values()[dauEventName]), function(key){
               if (key in revenue.values()) {
-                data['ARPDAU'][key] = revenue.values()[key] / dau.values()[dauEventName][key];
+                if (revenue.values()[key] / dau.values()[dauEventName][key]) {
+                    data['ARPDAU'][key] = revenue.values()[key] / dau.values()[dauEventName][key];
+                }
               }
           });
           
