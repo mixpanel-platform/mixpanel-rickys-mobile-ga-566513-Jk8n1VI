@@ -17,19 +17,22 @@
     <div id="table"></div>
     <script>
       MP.api.ready(function() {
-        var eventName = 'App Open';
+        var dauEventName = 'App Open';
+        var revenueEvent = 'In-App Purchase';
+        var revenueProp = 'amount';
+        
         var params = {
           'unit': 'day',
           'type': 'unique',
-          'from': moment().subtract(30, 'days'),
-          'to': moment()
-          
+          'from': moment().subtract(30, 'days')
         }
-        var $dau = MP.api.events(eventName, params);
         
-        $.when($dau).done(function(dau){
+        var $dau = MP.api.events(eventName, params);
+        var $revenue = MP.api.segment(revenueEvent, revenueProp, {from: moment().subtract(30, 'days'), method: 'sum'});
+      
+        $.when($dau, $revenue).done(function(dau, revenue){
           console.log(dau.values());
-          
+          console.log(revenue.values());
         });
         
         console.log($dau.values());
