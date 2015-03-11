@@ -21,13 +21,13 @@
         var revenueEvent = 'In-App Purchase';
         var revenueProp = 'amount';
         
-        var params = {
+        var dauParams = {
           'unit': 'day',
           'type': 'unique',
           'from': moment().subtract(30, 'days')
         }
         
-        var $dau = MP.api.events(eventName, params);
+        var $dau = MP.api.events(dauEventName, dauParams);
         var $revenue = MP.api.segment(revenueEvent, revenueProp, {from: moment().subtract(30, 'days'), method: 'sum'});
       
         $.when($dau, $revenue).done(function(dau, revenue){
