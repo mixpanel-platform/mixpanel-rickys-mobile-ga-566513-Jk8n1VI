@@ -35,11 +35,11 @@
               'ARPDAU': {
               }
           };
+          
+          console.log(revenue.values())
           _.each(_.keys(dau.values()), function(key){
-              console.log(key);
-              console.log(revenue.values())
+              
               if (key in revenue.values()) {
-                console.log('here');
                 data['ARPDAU'][key] = revenue.values()[key] / dau.values()[key];
               }
           });
