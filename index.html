@@ -17,7 +17,7 @@
     <div id="table"></div>
     <script>
       MP.api.ready(function() {
-        debugger;
+        
         var dauEventName = 'App Open';
         var revenueEvent = 'In-App Purchase';
         var revenueProp = 'amount';
@@ -39,8 +39,9 @@
           
           console.log(revenue.values())
           _.each(_.keys(dau.values()), function(key){
-              
+              debugger;
               if (key in revenue.values()) {
+                
                 data['ARPDAU'][key] = revenue.values()[key] / dau.values()[key];
               }
           });
