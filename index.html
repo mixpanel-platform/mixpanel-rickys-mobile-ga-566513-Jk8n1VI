@@ -30,13 +30,15 @@
         
         var $dau = MP.api.events(dauEventName, dauParams);
         var $revenue = MP.api.segment(revenueEvent, revenueProp, {from: moment().subtract(30, 'days'), method: 'sum'});
-      
+        
+        
+        
         $.when($dau, $revenue).done(function(dau, revenue){
           var data = {
               'ARPDAU': {
               }
           };
-          
+          console.log($dau.values())
           _.each(_.keys(dau.values()[dauEventName]), function(key){
               if (key in revenue.values() && revenue.values()[key] && dau.values()[dauEventName][key]) {
                   data['ARPDAU'][key] = revenue.values()[key] / dau.values()[dauEventName][key];
