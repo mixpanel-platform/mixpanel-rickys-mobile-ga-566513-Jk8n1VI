@@ -38,7 +38,7 @@
               'ARPDAU': {
               }
           };
-          console.log($dau.values())
+          console.log(dau.values())
           _.each(_.keys(dau.values()[dauEventName]), function(key){
               if (key in revenue.values() && revenue.values()[key] && dau.values()[dauEventName][key]) {
                   data['ARPDAU'][key] = revenue.values()[key] / dau.values()[dauEventName][key];
