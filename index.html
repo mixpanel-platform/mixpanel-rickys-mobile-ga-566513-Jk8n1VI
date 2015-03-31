@@ -34,14 +34,17 @@
         
         
         $.when($dau, $revenue).done(function(dau, revenue){
+          var dauValues = dau.values();
+          var revenueValues = revenue.values();
           var data = {
               'ARPDAU': {
               }
           };
-          console.log(dau.values())
-          _.each(_.keys(dau.values()[dauEventName]), function(key){
-              if (key in revenue.values() && revenue.values()[key] && dau.values()[dauEventName][key]) {
-                  data['ARPDAU'][key] = revenue.values()[key] / dau.values()[dauEventName][key];
+          
+          
+          _.each(_.keys(dauValues[dauEventName]), function(key){
+              if (key in revenueValues && revenueValues[key] && dauValues[dauEventName][key]) {
+                  data['ARPDAU'][key] = revenueValues[key] / dauValues[dauEventName][key];
               }
           });
           
